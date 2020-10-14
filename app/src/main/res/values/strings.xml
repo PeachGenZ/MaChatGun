@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MaChatGun</string>
+    <string name="login_button">Already have account</string>
+    <string name="signup_button">Create Account</string>
+    <string name="login_label">Login</string>
+    <string name="login">Login</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_password">Password</string>
+    <string name="signup_label">Create account</string>
+    <string name="enter_display_name">Display Name</string>
+    <string name="sign_up">Sign up</string>
+    <string name="logout_button">Log out</string>
 </resources>
