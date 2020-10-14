@@ -25,24 +25,26 @@ class LoginActivity : AppCompatActivity() {
             var email = edt_email_login.text.toString().trim()
             var password = edt_password_login.text.toString().trim()
 
-            if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
-                mAuth!!.signInWithEmailAndPassword(email,password).addOnCompleteListener {
-                        task: Task<AuthResult> ->
-                    if(task.isSuccessful){
-                        Toast.makeText(this, "Login Successful.", Toast.LENGTH_LONG).show()
-                        var intent = Intent(this, DashboardActivity::class.java)
-                        intent.putExtra("userId",mAuth!!.currentUser!!.uid)
-                        startActivity(intent)
-                        finish()
-                    }else{
-                        Toast.makeText(this, "Please check your email and password.", Toast.LENGTH_LONG).show()
-                    }
-                }
-            }else{
-                Toast.makeText(this, "Please check your email and password.", Toast.LENGTH_LONG).show()
-            }
+            loginWithEmailPassword(email, password)
         }
+    }
 
-
+    private fun loginWithEmailPassword(email: String, password: String){
+        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
+            mAuth!!.signInWithEmailAndPassword(email,password).addOnCompleteListener {
+                    task: Task<AuthResult> ->
+                if(task.isSuccessful){
+                    Toast.makeText(this, "Login Successful.", Toast.LENGTH_LONG).show()
+                    var intent = Intent(this, DashboardActivity::class.java)
+                    intent.putExtra("userId",mAuth!!.currentUser!!.uid)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    Toast.makeText(this, "Please check your email and password.", Toast.LENGTH_LONG).show()
+                }
+            }
+        }else{
+            Toast.makeText(this, "Please check your email and password.", Toast.LENGTH_LONG).show()
+        }
     }
 }
