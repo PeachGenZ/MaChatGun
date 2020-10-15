@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:clipToPadding="false"
-    android:elevation="50dp"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.StatusActivity">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -22,7 +19,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="270dp"
         android:elevation="16dp"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,40 +34,30 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_change_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:autoText="false"
-                android:text="@string/login_label"
+                android:text="@string/status_label"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
             <EditText
-                android:id="@+id/edt_email_login"
+                android:id="@+id/edt_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="30dp"
                 android:ems="10"
-                android:hint="@string/enter_email"
                 android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/edt_password_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:hint="@string/enter_password"
-                android:inputType="textPassword" />
-
             <Button
-                android:id="@+id/btn_login_submit"
+                android:id="@+id/btn_status_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:background="@color/colorAccent"
-                android:text="@string/login"
+                android:text="@string/update_status"
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>

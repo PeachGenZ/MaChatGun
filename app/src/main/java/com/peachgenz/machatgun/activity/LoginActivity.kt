@@ -1,4 +1,4 @@
-package com.peachgenz.machatgun
+package com.peachgenz.machatgun.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,8 @@ import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.peachgenz.machatgun.R
 import kotlinx.android.synthetic.main.activity_login.*
-import org.w3c.dom.Text
 
 class LoginActivity : AppCompatActivity() {
 
