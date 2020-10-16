@@ -135,7 +135,7 @@ class SettingActivity : AppCompatActivity() {
                                 var thumbUri = task.result.toString()
                                 var updateObject = HashMap<String,Any>()
                                 updateObject.put("image",imageUri)
-                                updateObject.put("_thumb_image",thumbUri)
+                                updateObject.put("thumb_image",thumbUri)
 
                                 mDatabase!!.reference.child("Users").child(userId)
                                     .updateChildren(updateObject)
