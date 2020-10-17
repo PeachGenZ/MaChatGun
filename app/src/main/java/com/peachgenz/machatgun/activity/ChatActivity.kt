@@ -17,9 +17,12 @@ import com.google.firebase.database.ValueEventListener
 import com.peachgenz.machatgun.R
 import com.peachgenz.machatgun.model.Message
 import com.peachgenz.machatgun.model.MessageHolder
+import com.peachgenz.machatgun.model.RecentChat
 import com.peachgenz.machatgun.model.User
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.message_row.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 
@@ -117,6 +120,18 @@ class ChatActivity : AppCompatActivity() {
                     var message = Message(userId,text)
 
                     messageRef.setValue(message)
+
+                    var dateFormat = SimpleDateFormat("yyMMddHHmmssSSS")
+                    var date = dateFormat.format(Date())
+
+                    var myRecentRef =  mDatabase!!.reference.child("Chat").child(userId).child(friendId).child("Recent")
+                    var friendRecentRef = mDatabase!!.reference.child("Chat").child(friendId).child(userId).child("Recent")
+
+                    var recentChat = RecentChat(date,message.message!!)
+
+                    myRecentRef.setValue(recentChat)
+                    friendRecentRef.setValue(recentChat)
+
                 }
             }
         }
