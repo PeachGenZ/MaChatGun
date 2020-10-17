@@ -19,7 +19,10 @@ import com.peachgenz.machatgun.model.Message
 import com.peachgenz.machatgun.model.MessageHolder
 import com.peachgenz.machatgun.model.RecentChat
 import com.peachgenz.machatgun.model.User
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.bar_customview_chat.*
+import kotlinx.android.synthetic.main.bar_customview_chat.view.*
 import kotlinx.android.synthetic.main.message_row.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,6 +36,10 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+
         mDatabase = FirebaseDatabase.getInstance()
         mAuth = FirebaseAuth.getInstance()
         var myUser: User? =  null
@@ -43,6 +50,8 @@ class ChatActivity : AppCompatActivity() {
         if (intent.extras != null){
             var chatId = intent!!.extras!!.get("chatid").toString()
             var friendId = intent!!.extras!!.get("friendid").toString()
+
+            var inflator = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
             var linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
 
@@ -95,6 +104,12 @@ class ChatActivity : AppCompatActivity() {
 
                                 rv_chat.layoutManager = linearLayoutManager
                                 rv_chat.adapter = adapter
+
+                                var actionBarView = inflater.inflate(R.layout.bar_customview_chat,null)
+                                actionBarView.tv_bar_name.text = friendUser!!.display_name
+                                Picasso.get().load(friendUser!!.thumb_image).placeholder(R.drawable.ic_male_user_profile_picture).into(actionBarView.iv_bar_image)
+
+                                supportActionBar!!.customView = actionBarView
                             }
 
                             override fun onCancelled(error: DatabaseError) {
